@@ -26,8 +26,8 @@
           "permission": {
             "check": {},
             "columns": [
-              "id",
-              "location_id"
+              "location_id",
+              "user_id"
             ],
             "backend_only": false
           }
