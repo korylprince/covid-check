@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "tables": [
+    {
+      "table": {
+        "schema": "public",
+        "name": "checkin"
+      },
+      "object_relationships": [
+        {
+          "name": "location",
+          "using": {
+            "foreign_key_constraint_on": "location_id"
+          }
+        },
+        {
+          "name": "user",
+          "using": {
+            "foreign_key_constraint_on": "user_id"
+          }
+        }
+      ],
+      "insert_permissions": [
+        {
+          "role": "anonymous",
+          "permission": {
+            "check": {},
+            "columns": [
+              "id",
+              "location_id"
+            ],
+            "backend_only": false
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "location"
+      },
+      "array_relationships": [
+        {
+          "name": "checkins",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "location_id",
+              "table": {
+                "schema": "public",
+                "name": "checkin"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "user"
+      },
+      "array_relationships": [
+        {
+          "name": "checkins",
+          "using": {
+            "foreign_key_constraint_on": {
+              "column": "user_id",
+              "table": {
+                "schema": "public",
+                "name": "checkin"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
