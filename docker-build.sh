@@ -3,7 +3,7 @@ set -e
 
 version=$1
 
-tag="korylprince/covid-check"
+tag="korylprince/covid-check-sync"
 
 docker build --no-cache --build-arg "VERSION=$version" --tag "$tag:$version" .
 
