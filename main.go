@@ -17,12 +17,14 @@ func main() {
 		users, err := GetADUsers(config)
 		if err != nil {
 			log.Println("ERROR: Unable to get AD users:", err)
+			time.Sleep(config.SyncInterval)
 			continue
 		}
 
 		n, err := UpsertUsers(config, users)
 		if err != nil {
 			log.Println("ERROR: Unable to get upsert users:", err)
+			time.Sleep(config.SyncInterval)
 			continue
 		}
 
